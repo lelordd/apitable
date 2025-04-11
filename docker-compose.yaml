@@ -95,7 +95,6 @@ services:
       mysql:
         condition: service_healthy
 
-  # Third Party Dockers
   gateway:
     image: ${IMAGE_REGISTRY}/${IMAGE_GATEWAY}
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
@@ -151,13 +150,7 @@ services:
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
     restart: always
     command:
-      [
-          "redis-server",
-          "--appendonly",
-          "yes",
-          "--requirepass",
-          "${REDIS_PASSWORD}",
-      ]
+      ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
     expose:
       - "6379"
     volumes:
@@ -180,13 +173,14 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - TZ=${TIMEZONE}
-    command:
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_general_ci
-      --sql_mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION
-      --lower_case_table_names=2
+    command: [
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_general_ci",
+      "--sql_mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION",
+      "--lower_case_table_names=2"
+    ]
     healthcheck:
-      test: "mysql ${MYSQL_DATABASE} -u${MYSQL_USERNAME} -p${MYSQL_PASSWORD} -e 'SELECT 1;'"
+      test: ["CMD", "mysql", "-u${MYSQL_USERNAME}", "-p${MYSQL_PASSWORD}", "-e", "SELECT 1;"]
       interval: 5s
       timeout: 5s
       start_period: 30s
@@ -211,7 +205,6 @@ services:
     networks:
       - apitable
 
-  # init data
   init-db:
     image: ${IMAGE_REGISTRY}/${IMAGE_INIT_DB}
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
@@ -230,7 +223,6 @@ services:
       mysql:
         condition: service_healthy
 
-  # init-appdata
   init-appdata:
     image: ${IMAGE_REGISTRY}/${IMAGE_INIT_APPDATA}
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}

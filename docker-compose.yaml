@@ -54,13 +54,12 @@ services:
       - apitable
     depends_on:
       init-db:
-        condition: service_completed_successfully
+        condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
-      start_period: 30s
-      retries: 60
+      retries: 3
 
   room-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_ROOM_SERVER}
@@ -212,14 +211,13 @@ services:
       "--character-set-server=utf8mb4",
       "--collation-server=utf8mb4_general_ci",
       "--sql_mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION",
-      "--lower_case_table_names=2"
+       "--lower_case_table_names=2"
     ]
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
-      start_period: 30s
-      retries: 60
+      retries: 3
     networks:
       - apitable
 

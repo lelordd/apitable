@@ -28,6 +28,11 @@ services:
       - BASEURL=${AWS_ENDPOINT}
     networks:
       - apitable
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   backend-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_BACKEND_SERVER}
@@ -78,6 +83,11 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3333"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   databus-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_DATABUS_SERVER}
@@ -99,6 +109,11 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8625/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   gateway:
     image: ${IMAGE_REGISTRY}/${IMAGE_GATEWAY}
@@ -122,6 +137,11 @@ services:
         condition: service_started
       init-appdata:
         condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   minio:
     container_name: minio
@@ -164,11 +184,11 @@ services:
       - TZ=${TIMEZONE}
     networks:
       - apitable
-  healthcheck:
-    test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
-    interval: 10s
-    timeout: 5s
-    retries: 5
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   mysql:
     container_name: mysql
@@ -214,6 +234,11 @@ services:
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
     networks:
       - apitable
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   init-db:
     image: ${IMAGE_REGISTRY}/${IMAGE_INIT_DB}

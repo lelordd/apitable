@@ -164,6 +164,11 @@ services:
       - TZ=${TIMEZONE}
     networks:
       - apitable
+  healthcheck:
+    test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+    interval: 10s
+    timeout: 5s
+    retries: 5
 
   mysql:
     container_name: mysql

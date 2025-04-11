@@ -257,6 +257,11 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "${MYSQL_HOST}", "-u${MYSQL_USERNAME}", "-p${MYSQL_PASSWORD}", "-e", "SELECT 1;"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   init-appdata:
     image: ${IMAGE_REGISTRY}/${IMAGE_INIT_APPDATA}
@@ -270,6 +275,11 @@ services:
         condition: service_healthy
       init-db:
         condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "exit 0"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
 
 networks:
   apitable:

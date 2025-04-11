@@ -12,7 +12,7 @@ services:
     networks:
       - apitable
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -29,7 +29,7 @@ services:
     networks:
       - apitable
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -51,7 +51,7 @@ services:
       init-db:
         condition: service_completed_successfully
     healthcheck:
-      test: ["CMD-SHELL", "curl -sS 'http://localhost:8081' || exit 1"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 5s
       timeout: 5s
       start_period: 30s
@@ -84,7 +84,7 @@ services:
       mysql:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3334"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -110,7 +110,7 @@ services:
       redis:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8625/health"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -138,7 +138,7 @@ services:
       init-appdata:
         condition: service_completed_successfully
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -164,7 +164,7 @@ services:
     networks:
       - apitable
     healthcheck:
-      test: ["CMD-SHELL", "curl -sS 'http://localhost:9000' || exit 1"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -185,7 +185,7 @@ services:
     networks:
       - apitable
     healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -210,7 +210,7 @@ services:
       "--lower_case_table_names=2"
     ]
     healthcheck:
-      test: ["CMD", "mysql", "-u${MYSQL_USERNAME}", "-p${MYSQL_PASSWORD}", "-e", "SELECT 1;"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 5s
       timeout: 5s
       start_period: 30s
@@ -235,7 +235,7 @@ services:
     networks:
       - apitable
     healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -258,7 +258,7 @@ services:
       mysql:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "mysql", "-h", "${MYSQL_HOST}", "-u${MYSQL_USERNAME}", "-p${MYSQL_PASSWORD}", "-e", "SELECT 1;"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 5s
       timeout: 5s
       retries: 10

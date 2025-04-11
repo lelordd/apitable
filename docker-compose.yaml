@@ -90,6 +90,8 @@ services:
     environment:
       - REDIS_HOST=redis
       - TZ=${TIMEZONE}
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     networks:
       - apitable
     depends_on:

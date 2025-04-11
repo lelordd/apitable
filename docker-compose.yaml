@@ -11,6 +11,11 @@ services:
       - "${ENV_FILE:-.env}"
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.apitable.entrypoints=web"
+      - "traefik.http.services.apitable.loadbalancer.server.port=8080"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s

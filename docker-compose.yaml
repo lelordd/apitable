@@ -11,6 +11,11 @@ services:
       - "${ENV_FILE:-.env}"
     networks:
       - apitable
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   imageproxy-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_IMAGEPROXY_SERVER}

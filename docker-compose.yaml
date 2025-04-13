@@ -16,9 +16,9 @@ services:
       - apitable
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.apitable.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.apitable.entrypoints=web,websecure"
-      - "traefik.http.services.apitable.loadbalancer.server.port=8080"
+      - "traefik.http.routers.apitable-web.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.apitable-web.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-web.loadbalancer.server.port=8080"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -38,6 +38,11 @@ services:
       - BASEURL=${AWS_ENDPOINT}
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-imageproxy.rule=Host(`imageproxy-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-imageproxy.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-imageproxy.loadbalancer.server.port=8080"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -59,6 +64,11 @@ services:
     entrypoint: ["/bin/sh", "-c", "sleep 20 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-backend.rule=Host(`backend-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-backend.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-backend.loadbalancer.server.port=8081"
     depends_on:
       - init-db
     healthcheck:
@@ -92,6 +102,11 @@ services:
     entrypoint: ["/bin/sh", "-c", "sleep 40 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-room.rule=Host(`room-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-room.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-room.loadbalancer.server.port=3333"
     depends_on:
       - mysql
     healthcheck:
@@ -121,6 +136,11 @@ services:
     entrypoint: ["/bin/sh", "-c", "sleep 60 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-databus.rule=Host(`databus-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-databus.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-databus.loadbalancer.server.port=8625"
     depends_on:
       - mysql
       - redis
@@ -150,6 +170,11 @@ services:
       - TZ=${TIMEZONE}
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-minio.rule=Host(`minio-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-minio.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-minio.loadbalancer.server.port=9001"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 5s
@@ -224,6 +249,11 @@ services:
       - TZ=${TIMEZONE}
     networks:
       - apitable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.apitable-rabbitmq.rule=Host(`rabbitmq-${DOMAIN}`)"
+      - "traefik.http.routers.apitable-rabbitmq.entrypoints=web,websecure"
+      - "traefik.http.services.apitable-rabbitmq.loadbalancer.server.port=15672"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s

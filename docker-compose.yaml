@@ -9,13 +9,15 @@ services:
       - "8080"
     env_file:
       - "${ENV_FILE:-.env}"
+    environment:
+      - SERVER_DOMAIN=${DOMAIN}
+      - API_PROXY=http://backend-server:8081
     networks:
       - apitable
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.apitable.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.apitable.entrypoints=websecure"
-      - "traefik.http.routers.apitable.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.apitable.entrypoints=web,websecure"
       - "traefik.http.services.apitable.loadbalancer.server.port=8080"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
@@ -54,7 +56,7 @@ services:
       - TZ=${TIMEZONE}
       - DEFAULT_TIME_ZONE=${TIMEZONE}
       - MYSQL_HOST=mysql
-    entrypoint: ["/bin/sh", "-c", "sleep 60 && java -jar /app/app.jar"]
+    entrypoint: ["/bin/sh", "-c", "sleep 20 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
     depends_on:
@@ -87,7 +89,7 @@ services:
       - INSTANCE_MAX_MEMORY=4096M
       - ENABLE_SOCKET=true
       - MYSQL_HOST=mysql
-    entrypoint: ["/bin/sh", "-c", "sleep 40 && node main.js"]
+    entrypoint: ["/bin/sh", "-c", "sleep 40 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
     depends_on:
@@ -116,7 +118,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USERNAME=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    entrypoint: ["/bin/sh", "-c", "sleep 120 && /usr/src/myapp/entrypoint.sh"]
+    entrypoint: ["/bin/sh", "-c", "sleep 60 && exec /docker-entrypoint.sh"]
     networks:
       - apitable
     depends_on:

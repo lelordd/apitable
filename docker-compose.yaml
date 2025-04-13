@@ -61,7 +61,7 @@ services:
       - TZ=${TIMEZONE}
       - DEFAULT_TIME_ZONE=${TIMEZONE}
       - MYSQL_HOST=mysql
-    entrypoint: ["/bin/sh", "-c", "sleep 20 && exec /docker-entrypoint.sh"]
+    command: "sleep 20"
     networks:
       - apitable
     labels:
@@ -99,7 +99,7 @@ services:
       - INSTANCE_MAX_MEMORY=4096M
       - ENABLE_SOCKET=true
       - MYSQL_HOST=mysql
-    entrypoint: ["/bin/sh", "-c", "sleep 40 && exec /docker-entrypoint.sh"]
+    command: "sleep 40"
     networks:
       - apitable
     labels:
@@ -133,7 +133,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USERNAME=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    entrypoint: ["/bin/sh", "-c", "sleep 60 && exec /docker-entrypoint.sh"]
+    command: "sleep 60 && /usr/src/myapp/databus-server"
     networks:
       - apitable
     labels:

@@ -14,13 +14,17 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.apitable.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.apitable.entrypoints=web"
+      - "traefik.http.routers.apitable.entrypoints=websecure"
+      - "traefik.http.routers.apitable.tls.certresolver=letsencrypt"
       - "traefik.http.services.apitable.loadbalancer.server.port=8080"
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
+    depends_on:
+      init-appdata:
+        condition: service_completed_successfully
 
   imageproxy-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_IMAGEPROXY_SERVER}
@@ -50,6 +54,7 @@ services:
     environment:
       - TZ=${TIMEZONE}
       - DEFAULT_TIME_ZONE=${TIMEZONE}
+      - MYSQL_HOST=mysql
     networks:
       - apitable
     depends_on:
@@ -82,6 +87,7 @@ services:
       - API_MAX_MODIFY_RECORD_COUNTS=${API_MAX_MODIFY_RECORD_COUNTS:-30}
       - INSTANCE_MAX_MEMORY=4096M
       - ENABLE_SOCKET=true
+      - MYSQL_HOST=mysql
     networks:
       - apitable
     depends_on:
@@ -103,9 +109,10 @@ services:
       - "${ENV_FILE:-.env}"
     environment:
       - TZ=${TIMEZONE}
-      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_HOST=redis
       - REDIS_PORT=${REDIS_PORT}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - MYSQL_HOST=mysql
     networks:
       - apitable
     depends_on:
@@ -113,34 +120,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD-SHELL", "exit 0"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-  gateway:
-    image: ${IMAGE_REGISTRY}/${IMAGE_GATEWAY}
-    pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
-    restart: always
-    ports:
-      - ${NGINX_HTTP_PORT:-80}:80
-      - ${NGINX_HTTPS_PORT:-443}:443
-    environment:
-      - TZ=${TIMEZONE}
-    networks:
-      - apitable
-    depends_on:
-      web-server:
-        condition: service_started
-      imageproxy-server:
-        condition: service_started
-      backend-server:
-        condition: service_healthy
-      room-server:
-        condition: service_started
-      init-appdata:
-        condition: service_completed_successfully
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -175,7 +154,7 @@ services:
 
   redis:
     container_name: redis
-    image: ${IMAGE_REDIS}
+    image: redis:7.2
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
     restart: always
     command:
@@ -196,22 +175,25 @@ services:
 
   mysql:
     container_name: mysql
-    image: ${IMAGE_MYSQL}
+    image: mysql:8.0
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
     restart: always
     volumes:
       - ${DATA_PATH}/.data/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
     expose:
       - "3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - TZ=${TIMEZONE}
     command: [
       "--character-set-server=utf8mb4",
       "--collation-server=utf8mb4_general_ci",
-      "--sql_mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION",
-       "--lower_case_table_names=2"
+      "--sql_mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION"
     ]
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
@@ -235,6 +217,7 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+      - TZ=${TIMEZONE}
     networks:
       - apitable
     healthcheck:
@@ -248,7 +231,7 @@ services:
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
     environment:
       - TZ=${TIMEZONE}
-      - DB_HOST=${MYSQL_HOST}
+      - DB_HOST=mysql
       - DB_PORT=${MYSQL_PORT}
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USERNAME=${MYSQL_USERNAME}
@@ -271,6 +254,8 @@ services:
     pull_policy: ${IMAGE_PULL_POLICY:-if_not_present}
     env_file:
       - "${ENV_FILE:-.env}"
+    environment:
+      - MYSQL_HOST=mysql
     networks:
       - apitable
     depends_on:

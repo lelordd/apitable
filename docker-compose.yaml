@@ -23,8 +23,7 @@ services:
       timeout: 5s
       retries: 3
     depends_on:
-      init-appdata:
-        condition: service_completed_successfully
+      - init-appdata
 
   imageproxy-server:
     image: ${IMAGE_REGISTRY}/${IMAGE_IMAGEPROXY_SERVER}
@@ -58,8 +57,7 @@ services:
     networks:
       - apitable
     depends_on:
-      init-db:
-        condition: service_healthy
+      - init-db
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -91,8 +89,7 @@ services:
     networks:
       - apitable
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -113,13 +110,15 @@ services:
       - REDIS_PORT=${REDIS_PORT}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - MYSQL_HOST=mysql
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USERNAME=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     networks:
       - apitable
     depends_on:
-      mysql:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - mysql
+      - redis
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 10s
@@ -241,8 +240,7 @@ services:
     networks:
       - apitable
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 5s
@@ -259,10 +257,8 @@ services:
     networks:
       - apitable
     depends_on:
-      mysql:
-        condition: service_healthy
-      init-db:
-        condition: service_completed_successfully
+      - mysql
+      - init-db
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
       interval: 5s

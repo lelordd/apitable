@@ -2,13 +2,13 @@ services:
   - type: web
     name: apitable
     env: docker
-    plan: pro plus
-    dockerfilePath: ./packaging/Dockerfile.render
-    dockerContext: ./packaging
+    plan: pro-plus
     envVars:
       - key: PORT
         value: 80
-    disk:
-      name: apitable-data
-      mountPath: /apitable
-      sizeGB: 50
+    volumes:
+      - name: apitable-data
+        path: /apitable
+    dockerfile: |
+      FROM apitable/all-in-one:latest
+      EXPOSE 80

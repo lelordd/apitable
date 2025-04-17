@@ -1,14 +1,20 @@
-services:
-  - type: web
-    name: apitable
-    env: docker
-    plan: pro-plus
-    envVars:
-      - key: PORT
-        value: 80
-    volumes:
-      - name: apitable-data
-        path: /apitable
-    dockerfile: |
-      FROM apitable/all-in-one:latest
-      EXPOSE 80
+# List the start-up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+image:
+  file: packaging/.gitpod.Dockerfile
+
+tasks:
+  - name: install dependency
+    init: |
+      npm install -g pnpm@8.13.1
+      make install
+    command: |
+      echo "Happy Coding"
+  - name: start APITable
+    command: |
+      make up
+      echo "Welcome to APITable"
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 80
+    onOpen: open-preview

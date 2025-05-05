@@ -19,6 +19,7 @@
 package com.apitable.interfaces.billing.model;
 
 import com.apitable.interfaces.billing.model.SubscriptionFeatures.ConsumeFeatures.AdminNums;
+import com.apitable.interfaces.billing.model.SubscriptionFeatures.ConsumeFeatures.AiAgentNums;
 import com.apitable.interfaces.billing.model.SubscriptionFeatures.ConsumeFeatures.ApiCallNumsPerMonth;
 import com.apitable.interfaces.billing.model.SubscriptionFeatures.ConsumeFeatures.ApiQpsNums;
 import com.apitable.interfaces.billing.model.SubscriptionFeatures.ConsumeFeatures.ArchivedRowsPerSheet;
@@ -68,6 +69,11 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
     @Override
     public CapacitySize getCapacitySize() {
         return new CapacitySize(-1L);
+    }
+
+    @Override
+    public AiAgentNums getAiAgentNums() {
+        return new AiAgentNums(-1L);
     }
 
     @Override

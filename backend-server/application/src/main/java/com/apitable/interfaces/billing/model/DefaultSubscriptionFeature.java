@@ -62,37 +62,37 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public Seat getSeat() {
-        return new Seat(10L);
+        return new Seat(-1L);
     }
 
     @Override
     public CapacitySize getCapacitySize() {
-        return new CapacitySize(1024 * 1024 * 10240L);
+        return new CapacitySize(1024 * 1024 * 1024 * 1024L);
     }
 
     @Override
     public FileNodeNums getFileNodeNums() {
-        return new FileNodeNums(10000L);
+        return new FileNodeNums(-1L);
     }
 
     @Override
     public RowsPerSheet getRowsPerSheet() {
-        return new RowsPerSheet(500000L);
+        return new RowsPerSheet(-1L);
     }
 
     @Override
     public ArchivedRowsPerSheet getArchivedRowsPerSheet() {
-        return new ArchivedRowsPerSheet(100000L);
+        return new ArchivedRowsPerSheet(-1L);
     }
 
     @Override
     public TotalRows getTotalRows() {
-        return new TotalRows(1000000L);
+        return new TotalRows(-1L);
     }
 
     @Override
     public MirrorNums getMirrorNums() {
-        return new MirrorNums(10000L);
+        return new MirrorNums(-1L);
     }
 
     @Override
@@ -108,27 +108,27 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public WidgetNums getWidgetNums() {
-        return new WidgetNums(2500L);
+        return new WidgetNums(-1L);
     }
 
     @Override
     public AutomationRunNumsPerMonth getAutomationRunNumsPerMonth() {
-        return new AutomationRunNumsPerMonth(1000000L);
+        return new AutomationRunNumsPerMonth(-1L);
     }
 
     @Override
     public FormNums getFormNums() {
-        return new FormNums(1000L);
+        return new FormNums(-1L);
     }
 
     @Override
     public GanttViewNums getGanttViewNums() {
-        return new GanttViewNums(1000L);
+        return new GanttViewNums(-1L);
     }
 
     @Override
     public CalendarViewNums getCalendarViewNums() {
-        return new CalendarViewNums(1000L);
+        return new CalendarViewNums(-1L);
     }
 
     @Override
@@ -143,7 +143,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public ApiQpsNums getApiQpsNums() {
-        return new ApiQpsNums(5L);
+        return new ApiQpsNums(-1L);
     }
 
     @Override
@@ -158,12 +158,12 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public Watermark getWatermark() {
-        return new Watermark(true);
+        return new Watermark(false);
     }
 
     @Override
     public AllowInvitation getAllowInvitation() {
-        return new AllowInvitation(true);
+        return new AllowInvitation(false);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public AllowShare getAllowShare() {
-        return new AllowShare(true);
+        return new AllowShare(false);
     }
 
     @Override
@@ -233,7 +233,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public AuditQueryDays getAuditQueryDays() {
-        return new AuditQueryDays(0L);
+        return new AuditQueryDays(30L);
     }
 
     @Override

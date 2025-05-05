@@ -62,7 +62,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public Seat getSeat() {
-        return new Seat(2L);
+        return new Seat(10L);
     }
 
     @Override

@@ -55,17 +55,17 @@ public class DefaultSubscriptionInfo implements SubscriptionInfo {
 
     @Override
     public boolean isFree() {
-        return feature;
+        return false;
     }
 
     @Override
     public boolean onTrial() {
-        return feature;
+        return false;
     }
 
     @Override
     public String getBasePlan() {
-        return feature;
+        return basePlan;
     }
 
     @Override

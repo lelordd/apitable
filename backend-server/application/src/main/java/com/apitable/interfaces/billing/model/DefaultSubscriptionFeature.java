@@ -67,32 +67,32 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public CapacitySize getCapacitySize() {
-        return new CapacitySize(1024 * 1024 * 1024L);
+        return new CapacitySize(1024 * 1024 * 10240L);
     }
 
     @Override
     public FileNodeNums getFileNodeNums() {
-        return new FileNodeNums(5L);
+        return new FileNodeNums(10000L);
     }
 
     @Override
     public RowsPerSheet getRowsPerSheet() {
-        return new RowsPerSheet(100L);
+        return new RowsPerSheet(500000L);
     }
 
     @Override
     public ArchivedRowsPerSheet getArchivedRowsPerSheet() {
-        return new ArchivedRowsPerSheet(250L);
+        return new ArchivedRowsPerSheet(100000L);
     }
 
     @Override
     public TotalRows getTotalRows() {
-        return new TotalRows(250L);
+        return new TotalRows(1000000L);
     }
 
     @Override
     public MirrorNums getMirrorNums() {
-        return new MirrorNums(-1L);
+        return new MirrorNums(10000L);
     }
 
     @Override
@@ -108,27 +108,27 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public WidgetNums getWidgetNums() {
-        return new WidgetNums(-1L);
+        return new WidgetNums(2500L);
     }
 
     @Override
     public AutomationRunNumsPerMonth getAutomationRunNumsPerMonth() {
-        return new AutomationRunNumsPerMonth(-1L);
+        return new AutomationRunNumsPerMonth(1000000L);
     }
 
     @Override
     public FormNums getFormNums() {
-        return new FormNums(-1L);
+        return new FormNums(1000L);
     }
 
     @Override
     public GanttViewNums getGanttViewNums() {
-        return new GanttViewNums(-1L);
+        return new GanttViewNums(1000L);
     }
 
     @Override
     public CalendarViewNums getCalendarViewNums() {
-        return new CalendarViewNums(-1L);
+        return new CalendarViewNums(1000L);
     }
 
     @Override
@@ -158,77 +158,77 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public Watermark getWatermark() {
-        return new Watermark(false);
+        return new Watermark(true);
     }
 
     @Override
     public AllowInvitation getAllowInvitation() {
-        return new AllowInvitation(false);
+        return new AllowInvitation(true);
     }
 
     @Override
     public AllowApplyJoin getAllowApplyJoin() {
-        return new AllowApplyJoin(false);
+        return new AllowApplyJoin(true);
     }
 
     @Override
     public AllowShare getAllowShare() {
-        return new AllowShare(false);
+        return new AllowShare(true);
     }
 
     @Override
     public AllowExport getAllowExport() {
-        return new AllowExport(false);
+        return new AllowExport(true);
     }
 
     @Override
     public AllowDownload getAllowDownload() {
-        return new AllowDownload(false);
+        return new AllowDownload(true);
     }
 
     @Override
     public AllowCopyData getAllowCopyData() {
-        return new AllowCopyData(false);
+        return new AllowCopyData(true);
     }
 
     @Override
     public AllowEmbed getAllowEmbed() {
-        return new AllowEmbed(false);
+        return new AllowEmbed(true);
     }
 
     @Override
     public ControlFormBrandLogo getControlFormBrandLogo() {
-        return new ControlFormBrandLogo(false);
+        return new ControlFormBrandLogo(true);
     }
 
     @Override
     public ShowMobileNumber getShowMobileNumber() {
-        return new ShowMobileNumber(false);
+        return new ShowMobileNumber(true);
     }
 
     @Override
     public ContactIsolation getContactIsolation() {
-        return new ContactIsolation(false);
+        return new ContactIsolation(true);
     }
 
     @Override
     public ForbidCreateOnCatalog getForbidCreateOnCatalog() {
-        return new ForbidCreateOnCatalog(false);
+        return new ForbidCreateOnCatalog(true);
     }
 
     @Override
     public RemainTrashDays getRemainTrashDays() {
-        return new RemainTrashDays(-1L);
+        return new RemainTrashDays(90L);
     }
 
     @Override
     public RemainTimeMachineDays getRemainTimeMachineDays() {
-        return new RemainTimeMachineDays(-1L);
+        return new RemainTimeMachineDays(90L);
     }
 
     @Override
     public RemainRecordActivityDays getRemainRecordActivityDays() {
-        return new RemainRecordActivityDays(-1L);
+        return new RemainRecordActivityDays(90L);
     }
 
     @Override
@@ -238,6 +238,6 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public AllowOrgApi getAllowOrgApi() {
-        return new AllowOrgApi(false);
+        return new AllowOrgApi(true);
     }
 }

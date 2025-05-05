@@ -171,14 +171,14 @@ public interface SubscriptionFeature {
     AllowOrgApi getAllowOrgApi();
 
     default AiAgentNums getAiAgentNums() {
-        return new AiAgentNums(0L);
+        return new AiAgentNums(-1L);
     }
 
     default MessageCreditNums getMessageCreditNums() {
-        return new MessageCreditNums(0L);
+        return new MessageCreditNums(-1L);
     }
 
     default AutomationRunNumsPerMonth getAutomationRunNumsPerMonth() {
-        return new AutomationRunNumsPerMonth(0L);
+        return new AutomationRunNumsPerMonth(-1L);
     }
 }

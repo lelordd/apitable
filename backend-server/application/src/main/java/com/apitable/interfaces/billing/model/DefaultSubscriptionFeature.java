@@ -159,7 +159,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public RainbowLabel getRainbowLabel() {
-        return new RainbowLabel(false);
+        return new RainbowLabel(true);
     }
 
     @Override
@@ -234,12 +234,12 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public RemainRecordActivityDays getRemainRecordActivityDays() {
-        return new RemainRecordActivityDays(90L);
+        return new RemainRecordActivityDays(120L);
     }
 
     @Override
     public AuditQueryDays getAuditQueryDays() {
-        return new AuditQueryDays(30L);
+        return new AuditQueryDays(120L);
     }
 
     @Override

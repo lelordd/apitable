@@ -76,13 +76,13 @@ public interface SubscriptionFeature {
     FileNodeNums getFileNodeNums();
 
     default ColumnsPerSheet getColumnsPerSheet() {
-        return new ColumnsPerSheet(30L);
+        return new ColumnsPerSheet(1L);
     }
 
     RowsPerSheet getRowsPerSheet();
 
     default SnapshotNumsPerSheet getSnapshotNumsPerSheet() {
-        return new SnapshotNumsPerSheet(0L);
+        return new SnapshotNumsPerSheet(1L);
     }
 
     ArchivedRowsPerSheet getArchivedRowsPerSheet();
@@ -114,11 +114,11 @@ public interface SubscriptionFeature {
     MirrorNums getMirrorNums();
 
     default DashboardNums getDashboardNums() {
-        return new DashboardNums(0L);
+        return new DashboardNums(1L);
     }
 
     default WidgetNums getWidgetNums() {
-        return new WidgetNums(0L);
+        return new WidgetNums(1L);
     }
 
     FieldPermissionNums getFieldPermissionNums();

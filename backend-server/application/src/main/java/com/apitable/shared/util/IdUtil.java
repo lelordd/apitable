@@ -30,7 +30,7 @@ public class IdUtil {
 
     public static final Integer DATASHEET_ID_FIXED_LENGTH = 15;
 
-    public static final Integer ID_FIXED_LENGTH = 100;
+    public static final Integer ID_FIXED_LENGTH = 10;
 
     public static final int SHARE_ID_LENGTH = 18;
 

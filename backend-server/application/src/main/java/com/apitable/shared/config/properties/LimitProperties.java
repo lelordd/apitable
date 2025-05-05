@@ -40,7 +40,7 @@ public class LimitProperties {
     /**
      * Maximum user space.
      */
-    private Integer spaceMaxCount = 100;
+    private Integer spaceMaxCount = 10;
 
     /**
      * Maximum file size of imported data table.
@@ -101,7 +101,7 @@ public class LimitProperties {
      * Maximum admin number of space.
      */
     @Deprecated
-    private Integer adminMaxCount = 200;
+    private Integer adminMaxCount = 20;
 
     /**
      * Maximum api usage of space.
@@ -112,7 +112,7 @@ public class LimitProperties {
     /**
      * Maximum dashboard numbers of space.
      */
-    private Integer dsbWidgetMaxCount = 150;
+    private Integer dsbWidgetMaxCount = 15;
 
     /**
      * Maximum robot number of space.

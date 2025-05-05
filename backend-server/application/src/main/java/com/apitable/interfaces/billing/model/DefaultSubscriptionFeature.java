@@ -67,7 +67,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public CapacitySize getCapacitySize() {
-        return new CapacitySize(1024 * 1024 * 1024 * 1024L);
+        return new CapacitySize(-1L);
     }
 
     @Override

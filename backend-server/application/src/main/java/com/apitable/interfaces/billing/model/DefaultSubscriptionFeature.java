@@ -154,7 +154,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public SocialConnect getSocialConnect() {
-        return new SocialConnect(false);
+        return new SocialConnect(true);
     }
 
     @Override
@@ -234,7 +234,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public RemainRecordActivityDays getRemainRecordActivityDays() {
-        return new RemainRecordActivityDays(120L);
+        return new RemainRecordActivityDays(700L);
     }
 
     @Override

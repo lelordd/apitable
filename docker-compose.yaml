@@ -2,9 +2,8 @@ version: "3.9"
 
 services:
   web-server:
-    build:
-      context: ./
-      dockerfile: ./packaging/Dockerfile.web-server
+    image: docker.io/apitable/web-server:latest
+    pull_policy: always
     restart: always
     expose:
       - "8080"
@@ -15,18 +14,20 @@ services:
 
   imageproxy-server:
     image: docker.io/apitable/imageproxy-server:latest
+    pull_policy: always
     restart: always
     expose:
       - "8080"
     environment:
-      - TZ=${TIMEZONE}
+      - TZ={TIMEZONE}
       - BASEURL=${AWS_ENDPOINT}
     networks:
       - apitable
 
   backend-server:
-    image: docker.io/apitable/backend-server:latest
-    pull_policy: always
+    build:
+      context: ./
+      dockerfile: ./packaging/Dockerfile.backend-server
     restart: always
     env_file:
       - ".env"
@@ -48,9 +49,8 @@ services:
       retries: 60
 
   room-server:
-    build:
-      context: ./
-      dockerfile: ./packaging/Dockerfile.room-server
+    image: docker.io/apitable/room-server:latest
+    pull_policy: always
     restart: always
     expose:
       - "3333"
@@ -85,9 +85,8 @@ services:
       - apitable
 
   gateway:
-    build:
-      context: ./gateway
-      dockerfile: ../packaging/Dockerfile.openresty
+    image: docker.io/apitable/openresty:latest
+    pull_policy: always
     restart: always
     ports:
       - 8088:80
@@ -134,9 +133,8 @@ services:
       retries: 30
 
   init-db:
-    build:
-      context: ./init-db
-      dockerfile: Dockerfile
+    image: docker.io/apitable/init-db:latest
+    pull_policy: always
     environment:
       - TZ=${TIMEZONE}
       - DB_HOST=${MYSQL_HOST}

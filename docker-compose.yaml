@@ -25,9 +25,8 @@ services:
       - apitable
 
   backend-server:
-    build:
-      context: ./
-      dockerfile: ./packaging/Dockerfile.backend-server
+    image: docker.io/apitable/backend-server:latest
+    pull_policy: always
     restart: always
     env_file:
       - ".env"

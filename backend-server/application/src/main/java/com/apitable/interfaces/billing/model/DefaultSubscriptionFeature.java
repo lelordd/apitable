@@ -164,12 +164,12 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public Watermark getWatermark() {
-        return new Watermark(false);
+        return new Watermark(true);
     }
 
     @Override
     public AllowInvitation getAllowInvitation() {
-        return new AllowInvitation(false);
+        return new AllowInvitation(true);
     }
 
     @Override
@@ -179,7 +179,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public AllowShare getAllowShare() {
-        return new AllowShare(false);
+        return new AllowShare(true);
     }
 
     @Override
@@ -224,22 +224,22 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public RemainTrashDays getRemainTrashDays() {
-        return new RemainTrashDays(90L);
+        return new RemainTrashDays(60L);
     }
 
     @Override
     public RemainTimeMachineDays getRemainTimeMachineDays() {
-        return new RemainTimeMachineDays(90L);
+        return new RemainTimeMachineDays(60L);
     }
 
     @Override
     public RemainRecordActivityDays getRemainRecordActivityDays() {
-        return new RemainRecordActivityDays(700L);
+        return new RemainRecordActivityDays(60L);
     }
 
     @Override
     public AuditQueryDays getAuditQueryDays() {
-        return new AuditQueryDays(120L);
+        return new AuditQueryDays(30L);
     }
 
     @Override

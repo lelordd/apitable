@@ -114,11 +114,11 @@ public interface SubscriptionFeature {
     MirrorNums getMirrorNums();
 
     default DashboardNums getDashboardNums() {
-        return new DashboardNums(1L);
+        return new DashboardNums(-1L);
     }
 
     default WidgetNums getWidgetNums() {
-        return new WidgetNums(1L);
+        return new WidgetNums(-1L);
     }
 
     FieldPermissionNums getFieldPermissionNums();
@@ -165,7 +165,7 @@ public interface SubscriptionFeature {
     AuditQueryDays getAuditQueryDays();
 
     default AuditQuery getAuditQuery() {
-        return new AuditQuery(false);
+        return new AuditQuery(true);
     }
 
     AllowOrgApi getAllowOrgApi();

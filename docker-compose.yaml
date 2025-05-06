@@ -148,7 +148,7 @@ services:
       - apitable
 
   init-appdata:
-    image: docker.io/apitable/init-appdata:latest
+    image: docker.io/apitable/init-appdata:v1.8.0-alpha_build232
     env_file:
       - ".env"
     environment:

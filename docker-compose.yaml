@@ -39,6 +39,9 @@ services:
     expose:
       - "8081"
     environment:
+      - NODE_OPTIONS="--max-old-space-size=16384 --max-http-header-size=32768"
+      - INSTANCE_MAX_MEMORY=8192M
+      - UV_THREADPOOL_SIZE=16
       - TZ=${TIMEZONE}
       - DEFAULT_TIME_ZONE=${TIMEZONE}
       - MAX_HTTP_HEADER_SIZE=64KB
@@ -79,8 +82,9 @@ services:
     environment:
       - TZ=${TIMEZONE}
       - NODE_ENV=${ENV}
-      - NODE_OPTIONS=--max-old-space-size=2048 --max-http-header-size=80000
-      - INSTANCE_MAX_MEMORY=4096M
+      - NODE_OPTIONS="--max-old-space-size=24576 --max-http-header-size=32768"
+      - INSTANCE_MAX_MEMORY=12288M
+      - UV_THREADPOOL_SIZE=24
       - ENABLE_SOCKET=true
       - REDIS_DB=3
       - SERVER_MAX_FIELD_COUNT=500
@@ -89,9 +93,7 @@ services:
       - LIMIT_POINTS=50
       - MYSQL_CONNECTION_LIMIT=100
       - SENTRY_DSN=
-      - ACTUATOR_DNS_URL=
-
-      
+      - ACTUATOR_DNS_URL=      
     networks:
       - apitable
 
@@ -186,6 +188,17 @@ services:
       - MYSQL_USERNAME=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - AWS_ACCESS_KEY=${MINIO_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${MINIO_SECRET_KEY}
+      - AWS_ENDPOINT=http://minio:9000
+      - AWS_REGION=eu-central-2
+      - ASSETS_BUCKET=assets
+      - SKIP_TEMPLATE_CENTER_LOADER=true
+      - SKIP_TEMPLATE_CENTER_CONFIG_LOADER=true
+      - SKIP_WIDGET_CENTER_LOADER=false
+      - SKIP_AUTOMATION_LOADER=false
+      - SKIP_LAB_FEATURE_LOADER=false
+      - SKIP_WIZARD_LOADER=false
     networks:
       - apitable
     depends_on:

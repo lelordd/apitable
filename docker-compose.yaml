@@ -47,7 +47,7 @@ services:
       - MAX_HTTP_HEADER_SIZE=64KB
       - MAX_FILE_SIZE=1GB
       - MAX_REQUEST_SIZE=1GB
-      - REDIS_DB=1  
+      - REDIS_DB=1
       - MAIL_SSL_ENABLE=false
       - SKIP_GLOBAL_WIDGET_AUDIT=true
       - SENTRY_DSN=

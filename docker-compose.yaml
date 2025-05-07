@@ -9,6 +9,8 @@ services:
     restart: always
     expose:
       - "8080"
+    environment:
+      - SYSTEM_CONFIGURATION_DEFAULT_THEME=light
     env_file:
       - ".env"
     networks:
@@ -39,6 +41,13 @@ services:
     environment:
       - TZ=${TIMEZONE}
       - DEFAULT_TIME_ZONE=${TIMEZONE}
+      - MAX_HTTP_HEADER_SIZE=64KB
+      - MAX_FILE_SIZE=1GB
+      - MAX_REQUEST_SIZE=1GB
+      - REDIS_DB=1  
+      - MAIL_SSL_ENABLE=false
+      - SKIP_GLOBAL_WIDGET_AUDIT=true
+      - SENTRY_DSN=
     networks:
       - apitable
     depends_on:
@@ -71,9 +80,18 @@ services:
       - TZ=${TIMEZONE}
       - NODE_ENV=${ENV}
       - NODE_OPTIONS=--max-old-space-size=2048 --max-http-header-size=80000
-      - API_MAX_MODIFY_RECORD_COUNTS=30
       - INSTANCE_MAX_MEMORY=4096M
       - ENABLE_SOCKET=true
+      - REDIS_DB=3
+      - SERVER_MAX_FIELD_COUNT=500
+      - SERVER_MAX_RECORD_COUNT=200000
+      - API_MAX_MODIFY_RECORD_COUNTS=50
+      - LIMIT_POINTS=50
+      - MYSQL_CONNECTION_LIMIT=100
+      - SENTRY_DSN=
+      - ACTUATOR_DNS_URL=
+
+      
     networks:
       - apitable
 

@@ -2,9 +2,7 @@ version: "3.9"
 
 services:
   web-server:
-    build:
-      context: ./
-      dockerfile: ./packaging/Dockerfile.web-server
+    image: docker.io/apitable/web-server:latest
     pull_policy: always
     restart: always
     expose:
@@ -30,6 +28,7 @@ services:
     build:
       context: ./
       dockerfile: ./packaging/Dockerfile.backend-server
+    pull_policy: always
     restart: always
     env_file:
       - ".env"
@@ -51,9 +50,7 @@ services:
       retries: 60
 
   room-server:
-    build:
-      context: ./
-      dockerfile: ./packaging/Dockerfile.room-server
+    image: docker.io/apitable/room-server:latest
     pull_policy: always
     restart: always
     expose:
@@ -78,6 +75,7 @@ services:
 
   databus-server:
     image: docker.io/apitable/databus-server:latest
+    pull_policy: always
     restart: always
     expose:
       - "8625"
@@ -89,9 +87,7 @@ services:
       - apitable
 
   gateway:
-    build:
-      context: ./gateway
-      dockerfile: ../packaging/Dockerfile.openresty
+    image: docker.io/apitable/openresty:latest
     pull_policy: always
     restart: always
     ports:
@@ -155,6 +151,7 @@ services:
 
   init-appdata:
     image: docker.io/apitable/init-appdata:v1.8.0-alpha_build232
+    pull_policy: always
     env_file:
       - ".env"
     environment:
@@ -172,6 +169,7 @@ services:
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3.11.9-management
+    pull_policy: always
     restart: always
     volumes:
       - ./.data/rabbitmq:/var/lib/rabbitmq

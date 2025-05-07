@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   web-server:
-    image: docker.io/apitable/web-server:latest
+    build:
+      context: ./
+      dockerfile: ./packaging/Dockerfile.web-server
     pull_policy: always
     restart: always
     expose:
@@ -49,7 +51,9 @@ services:
       retries: 60
 
   room-server:
-    image: docker.io/apitable/room-server:latest
+    build:
+      context: ./
+      dockerfile: ./packaging/Dockerfile.room-server
     pull_policy: always
     restart: always
     expose:
@@ -85,7 +89,9 @@ services:
       - apitable
 
   gateway:
-    image: docker.io/apitable/openresty:latest
+    build:
+      context: ./gateway
+      dockerfile: ../packaging/Dockerfile.openresty
     pull_policy: always
     restart: always
     ports:

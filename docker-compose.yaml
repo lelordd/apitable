@@ -39,7 +39,7 @@ services:
     expose:
       - "8081"
     environment:
-      - NODE_OPTIONS="--max-old-space-size=16384 --max-http-header-size=32768"
+      - ENV NODE_OPTIONS="--max-old-space-size=16384 --max-http-header-size=32768"
       - INSTANCE_MAX_MEMORY=8192M
       - UV_THREADPOOL_SIZE=16
       - TZ=${TIMEZONE}
@@ -82,7 +82,7 @@ services:
     environment:
       - TZ=${TIMEZONE}
       - NODE_ENV=${ENV}
-      - NODE_OPTIONS="--max-old-space-size=24576 --max-http-header-size=32768"
+      - NODE_OPTIONS=--max-old-space-size=24576 --max-http-header-size=32768
       - INSTANCE_MAX_MEMORY=12288M
       - UV_THREADPOOL_SIZE=24
       - ENABLE_SOCKET=true

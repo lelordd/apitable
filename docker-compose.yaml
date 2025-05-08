@@ -24,7 +24,15 @@ services:
       - "8080"
     environment:
       - TZ={TIMEZONE}
-      - BASEURL=${AWS_ENDPOINT}
+      - BASEURL=${BASAEURL}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
     networks:
       - apitable
 

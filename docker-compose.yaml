@@ -51,7 +51,6 @@ services:
       - MAIL_SSL_ENABLE=false
       - SKIP_GLOBAL_WIDGET_AUDIT=true
       - ASSETS_BUCKET=${ASSETS_BUCKET}
-      - SENTRY_DSN=.
       - ASSETS_URL=${ASSETS_URL}
       - OSS_ENABLED=${OSS_ENABLED}
       - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}

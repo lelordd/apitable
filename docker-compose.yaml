@@ -50,7 +50,16 @@ services:
       - REDIS_DB=1
       - MAIL_SSL_ENABLE=false
       - SKIP_GLOBAL_WIDGET_AUDIT=true
-      - SENTRY_DSN=
+      - SENTRY_DSN=.
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
+
     networks:
       - apitable
     depends_on:
@@ -135,31 +144,6 @@ services:
       init-appdata:
         condition: service_completed_successfully
 
-  minio:
-    container_name: minio
-    image: minio/minio:RELEASE.2023-01-25T00-19-54Z
-    restart: always
-    command: server --console-address ":9001" /data
-    expose:
-      - "9000"
-      - "9001"
-    volumes:
-      - ./.data/minio/data:/data
-      - ./.data/minio/config:/root/.minio
-    environment:
-      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
-      - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
-      - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY}
-      - TZ=${TIMEZONE}
-    networks:
-      - apitable
-    healthcheck:
-      test: ["CMD-SHELL", "curl -sS 'http://localhost:9000' || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-
   init-db:
     build:
       context: ./init-db
@@ -188,11 +172,11 @@ services:
       - MYSQL_USERNAME=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - AWS_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - AWS_ACCESS_SECRET=${MINIO_SECRET_KEY}
-      - AWS_ENDPOINT=http://minio:9000
-      - AWS_REGION=eu-central-2
-      - ASSETS_BUCKET=assets
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
       - SKIP_TEMPLATE_CENTER_LOADER=true
       - SKIP_TEMPLATE_CENTER_CONFIG_LOADER=true
       - SKIP_WIDGET_CENTER_LOADER=false

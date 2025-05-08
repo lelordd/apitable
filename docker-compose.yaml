@@ -99,9 +99,7 @@ services:
       - SERVER_MAX_RECORD_COUNT=200000
       - API_MAX_MODIFY_RECORD_COUNTS=50
       - LIMIT_POINTS=50
-      - MYSQL_CONNECTION_LIMIT=100
-      - SENTRY_DSN=
-      - ACTUATOR_DNS_URL=      
+      - MYSQL_CONNECTION_LIMIT=20
     networks:
       - apitable
 

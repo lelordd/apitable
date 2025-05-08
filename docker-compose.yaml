@@ -50,7 +50,6 @@ services:
       - REDIS_DB=1
       - MAIL_SSL_ENABLE=false
       - SKIP_GLOBAL_WIDGET_AUDIT=true
-      - SENTRY_DSN=.
       - ASSETS_BUCKET=${ASSETS_BUCKET}
       - ASSETS_URL=${ASSETS_URL}
       - OSS_ENABLED=${OSS_ENABLED}

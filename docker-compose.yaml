@@ -11,6 +11,15 @@ services:
       - "8080"
     environment:
       - SYSTEM_CONFIGURATION_DEFAULT_THEME=light
+      - BASEURL=${ASSETS_URL}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
     env_file:
       - ".env"
     networks:
@@ -108,6 +117,15 @@ services:
       - API_MAX_MODIFY_RECORD_COUNTS=50
       - LIMIT_POINTS=50
       - MYSQL_CONNECTION_LIMIT=20
+      - BASEURL=${ASSETS_URL}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
     networks:
       - apitable
 
@@ -121,6 +139,15 @@ services:
       - ".env"
     environment:
       - TZ=${TIMEZONE}
+      - BASEURL=${ASSETS_URL}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
     networks:
       - apitable
 
@@ -135,6 +162,15 @@ services:
       - 8443:8443
     environment:
       - TZ=${TIMEZONE}
+      - BASEURL=${ASSETS_URL}
+      - ASSETS_BUCKET=${ASSETS_BUCKET}
+      - ASSETS_URL=${ASSETS_URL}
+      - OSS_ENABLED=${OSS_ENABLED}
+      - OSS_CLIENT_TYPE=${OSS_CLIENT_TYPE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_REGION=${AWS_REGION}
     networks:
       - apitable
     depends_on:

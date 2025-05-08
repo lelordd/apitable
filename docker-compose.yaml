@@ -24,7 +24,7 @@ services:
       - "8080"
     environment:
       - TZ={TIMEZONE}
-      - BASEURL=${BASAEURL}
+      - BASEURL=${ASSETS_URL}
       - ASSETS_BUCKET=${ASSETS_BUCKET}
       - ASSETS_URL=${ASSETS_URL}
       - OSS_ENABLED=${OSS_ENABLED}

@@ -195,7 +195,7 @@
       "value": "https://h5.dingtalk.com/dingtalk-da/index.html"
     },
     "integration_dingtalk_help_url": {
-      "value": "https://help.vika.cn/docs/guide/integration-dingtalk",
+      "value": "https://help.aitable.ai/docs/guide/integration-dingtalk",
       "marketplace": {
         "integration": "ina9134969049653777"
       }
@@ -207,7 +207,7 @@
       "value": "vika维格表 使用指南"
     },
     "integration_feishu_help_url": {
-      "value": "https://help.vika.cn/docs/guide/integration-lark",
+      "value": "https://help.aitable.ai/docs/guide/integration-lark",
       "marketplace": {
         "integration": "cli_9f3930dd7d7ad00c, cli_a08120b120fad00e, cli_9f614b454434500e"
       }
@@ -237,10 +237,10 @@
       "value": "/space/2021/09/16/124e249b651f4934949ae39839e3ee77"
     },
     "integration_wecom_custom_subdomain_help_url": {
-      "value": "https://help.vika.cn/docs/guide/intro_custom_subdomain"
+      "value": "https://help.aitable.ai/docs/guide/intro_custom_subdomain"
     },
     "integration_wecom_help_url": {
-      "value": "https://help.vika.cn/docs/guide/integration-wecom",
+      "value": "https://help.aitable.ai/docs/guide/integration-wecom",
       "marketplace": {
         "integration": "ina5200279359980055"
       }
@@ -252,7 +252,7 @@
       "value": "/space/2021/08/02/6b5374b4b3ba42aba69022ae2b13a577"
     },
     "integration_wecom_shop_cms": {
-      "value": "https://help.vika.cn/docs/guide/integration-wecom"
+      "value": "https://help.aitable.ai/docs/guide/integration-wecom"
     },
     "integration_wecom_shop_corpid_dev": {
       "value": "ww11761d11177ae10b"
@@ -282,7 +282,7 @@
       "value": "/wecom-integration/#upgrade"
     },
     "integration_yozosoft_help_url": {
-      "value": "https://help.vika.cn/docs/guide/integration-yozosoft",
+      "value": "https://help.aitable.ai/docs/guide/integration-yozosoft",
       "marketplace": {
         "integration": "ina5645957505507647"
       }
@@ -6710,7 +6710,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/03/16/8374ca1295664675bd1155b077555113\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-03-16-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>镜像功能再次升级，可禁止查看已隐藏的字段</li><li>个人设置追加时区信息，日期字段可指定时区</li><li>「全局搜索」优化，新增搜索结果分类</li><li>神奇表单支持隐藏官方标识</li><li>API 性能优化，大幅提高请求速度</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/03/16/8374ca1295664675bd1155b077555113\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-03-16-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>镜像功能再次升级，可禁止查看已隐藏的字段</li><li>个人设置追加时区信息，日期字段可指定时区</li><li>「全局搜索」优化，新增搜索结果分类</li><li>神奇表单支持隐藏官方标识</li><li>API 性能优化，大幅提高请求速度</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6724,7 +6724,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/04/04/bcf0695cf35840e6b85e032a8e5ea0a1\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-04-10-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>推出新字段类型「多级联动」，神奇表单支持多级选项</li><li>脚本小程序上架，少少代码满足多多定制化</li><li>维格表机器人支持「发送邮件」</li><li>维格表机器人支持「发送到Slack」</li><li>维格表的AI探索，「GPT 内容生成」小程序发布</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/04/04/bcf0695cf35840e6b85e032a8e5ea0a1\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-04-10-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>推出新字段类型「多级联动」，神奇表单支持多级选项</li><li>脚本小程序上架，少少代码满足多多定制化</li><li>维格表机器人支持「发送邮件」</li><li>维格表机器人支持「发送到Slack」</li><li>维格表的AI探索，「GPT 内容生成」小程序发布</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6738,7 +6738,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/05/11/eb7778e708ac421294ed3b137e8a50c2\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-05-11-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>优化用户体验，采用标签页切换工作目录与星标区域</li><li>小程序支持数据筛选，数据分析更高效灵活</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/05/11/eb7778e708ac421294ed3b137e8a50c2\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-05-11-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>优化用户体验，采用标签页切换工作目录与星标区域</li><li>小程序支持数据筛选，数据分析更高效灵活</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6752,7 +6752,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/06/19/41e7087220764e86bd0020da33b00e23\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-06-15-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>自动关注被分配的任务动态，重点信息一个不落 </li><li>「批量图片生成器」小程序上架，三分钟出图上百张</li><li>网址字段支持自定义网址标题，阅读体验更加清晰 </li><li>神奇引用字段升级！支持调整引用数据的排序和数量</li><li>开放通讯录相关APIs，支持更多的企业自动化场景</li><li>API调用频率调整，黄金级以上可获得更高的并发数</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/06/19/41e7087220764e86bd0020da33b00e23\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-06-15-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>自动关注被分配的任务动态，重点信息一个不落 </li><li>「批量图片生成器」小程序上架，三分钟出图上百张</li><li>网址字段支持自定义网址标题，阅读体验更加清晰 </li><li>神奇引用字段升级！支持调整引用数据的排序和数量</li><li>开放通讯录相关APIs，支持更多的企业自动化场景</li><li>API调用频率调整，黄金级以上可获得更高的并发数</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6766,7 +6766,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/07/25/1d5c36599371436f831c758daedfd4ee\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-07-20-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>表格支持创建和回溯版本历史，数据随时安全备份 </li><li>分享文件的窗口优化，操作更加简洁清晰</li><li>视图协作的交互更新，减少多人协作冲突</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2023/07/25/1d5c36599371436f831c758daedfd4ee\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-07-20-updates\",\n    \"children\": \"<h3>🚀 新功能介绍</h3>\\n<ul><li>表格支持创建和回溯版本历史，数据随时安全备份 </li><li>分享文件的窗口优化，操作更加简洁清晰</li><li>视图协作的交互更新，减少多人协作冲突</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6859,7 +6859,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://help.vika.cn/assets/images/update_cover@4x-dc5caa13339ad2deaea06e1db4aae0ac.png\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/23-12-01-updates\",\n    \"children\": \"<h3>🚀 本次更新内容</h3>\\n<ul>\\n<li>基于全新数据引擎的 Fusion API v3 内测启动，搭载全新数据引擎，期待您的加入</li>\\n<li>全新「按钮」维格列上线：一键操作，简化工作流程，提升效率</li>\\n<li>新功能「轻文档」维格列上线：一站式解决文档管理与业务管理</li>\\n</ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://help.aitable.ai/assets/images/update_cover@4x-dc5caa13339ad2deaea06e1db4aae0ac.png\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/23-12-01-updates\",\n    \"children\": \"<h3>🚀 本次更新内容</h3>\\n<ul>\\n<li>基于全新数据引擎的 Fusion API v3 内测启动，搭载全新数据引擎，期待您的加入</li>\\n<li>全新「按钮」维格列上线：一键操作，简化工作流程，提升效率</li>\\n<li>新功能「轻文档」维格列上线：一站式解决文档管理与业务管理</li>\\n</ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"
@@ -6903,7 +6903,7 @@
         ],
         "next": "查看详情",
         "nextId": "check_detail",
-        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2024/01/24/3aa9d045e1504ab7a4f0d1ebb01af1c6\",\n    \"readMoreUrl\": \"https://help.vika.cn/changelog/24-01-25-updates\",\n    \"children\": \"<h3>🚀 本次更新内容</h3><ul><li>归档记录功能升级：归档记录后，保留双向关联关系</li><li>自定义页面上线，一站式管理所有网页资源</li><li>轻文档功能升级：图片组件完善、支持上传视频、导出文件到本地</li></ul>\"\n}",
+        "uiConfig": "{\n    \"headerImg\": \"https://s1.vika.cn/space/2024/01/24/3aa9d045e1504ab7a4f0d1ebb01af1c6\",\n    \"readMoreUrl\": \"https://help.aitable.ai/changelog/24-01-25-updates\",\n    \"children\": \"<h3>🚀 本次更新内容</h3><ul><li>归档记录功能升级：归档记录后，保留双向关联关系</li><li>自定义页面上线，一站式管理所有网页资源</li><li>轻文档功能升级：图片组件完善、支持上传视频、导出文件到本地</li></ul>\"\n}",
         "onClose": [
           "set_wizard_completed({\"curWizard\": true})",
           "open_guide_next_step({\"clearAllPrevUi\":true})"

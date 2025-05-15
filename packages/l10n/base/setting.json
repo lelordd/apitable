@@ -243,7 +243,7 @@
 		"value": "space/2020/09/16/77e941353d8141b69f684e2592350ec7"
 	},
 	"integration_wecom_custom_subdomain_help_url": {
-		"value": "https://help.vika.cn/docs/guide/intro_custom_subdomain"
+		"value": "https://help.aitable.ai/docs/guide/intro_custom_subdomain"
 	},
 	"login_icp1_url": {
 		"value": "https://beian.miit.gov.cn/"
@@ -258,16 +258,16 @@
 		"value": "[\"spcXXXXX\"]"
 	},
 	"integration_yozosoft_help_url": {
-		"value": "https://help.vika.cn/docs/guide/integration-yozosoft"
+		"value": "https://help.aitable.ai/docs/guide/integration-yozosoft"
 	},
 	"integration_dingtalk_help_url": {
-		"value": "https://help.vika.cn/docs/guide/integration-dingtalk"
+		"value": "https://help.aitable.ai/docs/guide/integration-dingtalk"
 	},
 	"integration_dingtalk_da": {
 		"value": "https://h5.dingtalk.com/dingtalk-da/index.html"
 	},
 	"integration_feishu_help_url": {
-		"value": "https://help.vika.cn/docs/guide/integration-lark"
+		"value": "https://help.aitable.ai/docs/guide/integration-lark"
 	},
 	"login_privacy_policy": {
 		"value": "维格隐私政策"
@@ -276,10 +276,10 @@
 		"value": "维格服务协议"
 	},
 	"integration_wecom_help_url": {
-		"value": "https://help.vika.cn/docs/guide/integration-wecom"
+		"value": "https://help.aitable.ai/docs/guide/integration-wecom"
 	},
 	"integration_wecom_shop_cms": {
-		"value": "https://help.vika.cn/docs/guide/integration-wecom"
+		"value": "https://help.aitable.ai/docs/guide/integration-wecom"
 	},
 	"system_configuration_minmum_version_require": {
 		"value": "0.5.0"

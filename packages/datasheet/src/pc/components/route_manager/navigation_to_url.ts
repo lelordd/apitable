@@ -45,7 +45,7 @@ export const navigationToUrl = (
   const urlQuery = new URLSearchParams(urlObj.search);
   // Since there is a written dead url in the configuration table (starting with vika.cn),
   // for multi-environment testing, it is necessary to open vika.cn
-  const reg = new RegExp(`^(${window.location.origin}|(http|https)://vika.cn)|(http|https)://help.vika.cn`);
+  const reg = new RegExp(`^(${window.location.origin}|(http|https)://vika.cn)|(http|https)://help.aitable.ai`);
   let newQuery: IQuery = {};
   // Collect the existing query on the url
   for (const [key, value] of urlQuery) {

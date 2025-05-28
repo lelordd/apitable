@@ -134,21 +134,20 @@ services:
     restart: always
     command: server --console-address ":9001" /data
     expose:
-      - "9000"
-      - "9001"
+      - "9000:9000"
+      - "9001:9001"
     volumes:
-      - ./.data/minio/data:/data
-      - ./.data/minio/config:/root/.minio
+      - minio_data:/data
+      - minio_config:/root/.minio
     environment:
-      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY}
+      - MINIO_VOLUMES="/data"
       - TZ=${TIMEZONE}
     networks:
       - apitable
     healthcheck:
-      test: ["CMD-SHELL", "curl -sS 'http://localhost:9000' || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:9000/minio/health/live || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -203,6 +202,10 @@ services:
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
     networks:
       - apitable
+
+volumes:
+  minio_data:
+  minio_config:
 
 networks:
   apitable:

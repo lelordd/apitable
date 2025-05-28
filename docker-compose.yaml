@@ -130,9 +130,9 @@ services:
 
   minio:
     container_name: minio
-    image: minio/minio:RELEASE.2023-01-25T00-19-54Z
+    image: minio/minio:RELEASE.2023-10-25T06-33-25Z
     restart: always
-    command: server --console-address ":9001" /data
+    command: server --console-address ":9001" /data{1...4}
     expose:
       - "9000:9000"
       - "9001:9001"
@@ -142,7 +142,7 @@ services:
     environment:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY}
-      - MINIO_VOLUMES="/data"
+      - MINIO_VOLUMES="/data{1...4}"
       - TZ=${TIMEZONE}
     networks:
       - apitable
@@ -205,7 +205,9 @@ services:
 
 volumes:
   minio_data:
+    driver: local
   minio_config:
+    driver: local
 
 networks:
   apitable:
